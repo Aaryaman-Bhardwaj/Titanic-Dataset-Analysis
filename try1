@@ -1,0 +1,54 @@
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+import os
+
+file=[]
+
+for dirname, _, filenames in os.walk('/home/aaryaman_bhardwaj/Documents/ML/Titanic'):
+    for filename in filenames:
+        file.append(os.path.join(dirname, filename))
+
+full_data=pd.read_csv(file[4])
+full_data
+
+copy1= full_data
+
+copy1.columns
+
+#Embarked
+copy1[['PassengerId', 'Embarked','Survived']]
+
+c1=copy1.loc[copy1['Embarked']=='S']
+c2=copy1.loc[copy1['Embarked']=='Q']
+c3=copy1.loc[copy1['Embarked']=='C']
+
+
+c1=c1.loc[copy1['Survived']==1]
+c2=c2.loc[copy1['Survived']==1]
+c3=c3.loc[copy1['Survived']==1]
+
+c1 # 217/644
+c2 # 30/77
+c3 # 93/168
+
+
+#Pclass
+
+pc1=copy1.loc[copy1['Pclass']==1]
+pc2=copy1.loc[copy1['Pclass']==2]
+pc3=copy1.loc[copy1['Pclass']==3]
+
+
+pc1=c1.loc[copy1['Survived']==1]
+pc2=c2.loc[copy1['Survived']==1]
+pc3=c3.loc[copy1['Survived']==1]
+
+pc1 # 217/216
+pc2 # 30/184
+pc3 # 93/491
+
+
+
+
+
